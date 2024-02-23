@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+    
+
+
+<div class="container-fluid at-5">
+    <div class="media">
+      <img id="preview-image" class="align-self-center mr-3" src="#" alt="Preview Image" style="max-width: 100%; max-height: 200px; display: none;">
+      <input type="file" name="image" id="image-input" accept="image/*" onchange="previewImage(event)" style="margin-bottom: 10px;">
+        <div class="media-body">
+          <h5 class="mt-0">Vendor Detail</h5>
+          <p>Hotel Name: {{ vendor.hotel_name }}</p>
+          <p>Email: {{ vendor.email }}</p>
+          <p>Phone: {{ vendor.phone }}</p>
+          <p>Address {{ vendor.address }}</p><br>
+
+          <a href="{% url 'vendor_list' %}" class="btn btn-primary">back to Vendor List</a>
+        </div>
+    </div>
+    
+  <script>
+      // Function to preview the chosen image
+      function previewImage(event) {
+          var input = event.target;
+          var preview = document.getElementById('preview-image');
+  
+          if (input.files && input.files[0]) {
+              var reader = new FileReader();
+  
+              reader.onload = function (e) {
+                  preview.src = e.target.result;
+                  preview.style.display = 'block';
+              };
+  
+              reader.readAsDataURL(input.files[0]);
+          }
+      }
+  </script>
+    </div>
+</div>
+      
+    
+           
+        
+
+    
+    
+
+{% endblock %}

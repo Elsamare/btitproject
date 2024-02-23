@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+<h2>{{url}}</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>{{product.name|upper}} - {{product.price}}/-</h2>
+        </div>
+        <div class="col-6">
+
+            <img src="{{product.image.url}}" class="card-img-top" alt="...">
+        </div>
+        <div class="col-6">
+            <div class="col-lg-12">
+                
+                <!-- Step tabs -->
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <ul class="nav nav-pills nav-justified align-items-center mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                            
+                                <a class="{% if step == 1 %}active{% endif %}" id="pills-Info-tab" data-toggle="pill" href="#pills-Info" role="tab" aria-controls="pills-Info" aria-selected="true">Info</a>
+                            
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                
+                                
+                            <a class="{% if step == 2 %}active{% endif %}" id="pills-pickup-tab" data-toggle="pill" href="#pills-pickup" role="tab" aria-controls="pills-pickup" aria-selected="false">pickup</a>
+                            </li>
+                            </ul>
+                    </div>
+                </div>
+
+
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active {% if step == 1 %}show active{% endif %}" id="pills-Info" role="tabpanel" aria-labelledby="pills-Info-tab">...
+                                    <h1>Item Info</h1>
+                                    <div class="col-md-6">
+                                        <h4>Payment for the food is done after the delivery.....</h4>
+                                       
+                                    </div>
+                                    
+
+                                </div>
+                                <div class="tab-pane fade {% if step == 2 %}show active{% endif %}" id="pills-pickup" role="tabpanel" aria-labelledby="pills-pickup-tab">...
+                                    <h1>Pickup</h1>
+
+                                    <form method="post" enctype="multipart/form-data">
+                                        <b class="text-secondary">Pickup Information</b>
+                                        <div class="card bg-white mt-2 mb-5">
+                                            <div class="card-body">
+                                                {% csrf_token %}
+                                                {% bootstrap_form form %}
+                                                
+                                                <br>
+                                                
+                                                    
+                                                
+
+                                                      
+                                                      
+                                                    </div></div>
+                                                <div class="col-8 text-right">
+                                                    <button type="submit" class="btn btn-primary  btn-lg btn-block">Order</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                  '''' <script>
+                                   document.addEventListener('DOMContentLoaded', function () {
+                                    var form = document.querySelector('form');
+                                    form.addEventListener('submit', function (event) {
+                                        var inputs = form.querySelectorAll('input, select, textarea');
+                                        for (var i = 0; i < inputs.length; i++) {
+                                            var input = inputs[i];
+                                            if (input.required && !input.value.trim()) {
+                                                alert('Please fill out all required fields.');
+                                                event.preventDefault();
+                                                return;
+                                            }
+                                        }
+                                    });
+                                    });
+                                    </script>'''
+                                </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+<h2>{{url}}</h2>
+
+<div class="container-fluid at-5" >
+    <div class="row justify-content-center">
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="text-center text-uppercase mb-4">
+                        <b>Create  An Account Here</b>
+                    </h4>
+                    <form method="post">
+                        {% csrf_token %}
+                        {% bootstrap_form form %}<br>
+                        <div class="col-15 text-right">
+                            <button type="submit" class="btn btn-primary  btn-lg btn-block">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}

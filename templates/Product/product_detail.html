@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block content %}
+
+
+
+
+<div class="container">
+    <div class="row">
+        
+        <div class="col-md-6">
+            <img src="{{object.image.url}}" class="card-img-top" alt="...">
+            
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Product : {{object.name}}</b></li>
+                    <li class="list-group-item"><b> Description </b> {{object.description}}</li>
+                    <li class="list-group-item"><b> Price </b> {{object.price}}/-</li></ul>
+                    <h2>Average Rating: {{ average_rating }}</h2>
+                    
+
+  <!-- Display product reviews if needed -->
+  
+  <div>
+  
+      {% if i < average_rating %}
+        <span class="fa fa-star checked"></span>
+      {% else %}
+        <span class="fa fa-star"></span>
+      {% endif %}
+    
+  </div>
+
+  <!-- Display product reviews if needed -->
+  {% for review in product.reviews.all %}
+    <p>Review: Rating: {{ review.rating }}</p>
+  {% endfor %}
+
+
+                </div>
+            </div>
+        </div><br>
+       
+  
+  
+      
+      
+      <a href="{% url 'Product_order_create' object.slug %}" class="btn btn-primary">Buy Now(cash)</a>
+
+    </div></div><br>
+</div>
+            
+</div>
+{% endblock %}
+        
+  
+    
+    
+
+
+  
+          
+
+
+ 
+             
+              
+
+              
+              
